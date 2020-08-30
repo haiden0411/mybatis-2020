@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiden.mapper.ClassesMapper">
+    
+    <resultMap id="classesMap" type="classes">
+        <id column="c_id" property="cId" />
+        <result column="c_name" property="cName"/>
+    </resultMap>
+    <select id="getClasses" resultMap="classesMap">
+        select * from classes
+    </select>
+
+    <select id="getClassById" resultMap="">
+        SELECT * from classes c INNER JOIN student s on c.c_id = s.class_id and c.c_id = #{cid}
+    </select>
+</mapper>

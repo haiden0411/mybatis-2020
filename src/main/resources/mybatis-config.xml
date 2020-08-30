@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--引入外部的数据库配置文件-->
+    <properties resource="jdbc.properties"></properties>
+
+    <!--实体类取别名-->
+    <typeAliases>
+        <!--直接给所有的实体类取别名。默认的实体类的别名就是类名(不区分小大写)
+            User实体类：User、user、USER
+        -->
+        <package name="com.haiden.bean"/>
+    </typeAliases>
+
+
+    <!--配置MyBatis连接数据库-->
+    <!--开发环境-->
+    <environments default="development">
+        <!--目前是 开发的环境-->
+        <environment id="development">
+            <!--使用JDBC管事务-->
+            <transactionManager type="JDBC"/>
+            <!--配置数据库连接信息 底层用到连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--引入映射文件-->
+    <mappers>
+        <!-- <mapper resource="com/bruceliu/mapper/UserMappper.xml"></mapper>-->
+        <!--<mapper class="com.bruceliu.mapper.UserMappper"></mapper>-->
+
+        <!--直接映射包的名字，那么这个包下面所有的Mapper接口全部映射！-->
+        <package name="com.haiden.mapper"/>
+
+    </mappers>
+
+</configuration>
