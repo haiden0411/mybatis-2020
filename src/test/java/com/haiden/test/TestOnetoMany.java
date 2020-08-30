@@ -30,6 +30,12 @@ public class TestOnetoMany
         classes.forEach(System.out::println);
     }
 
+    @Test
+    public void testGetClassesByid(){
+        Classes classes = mapper.getClassById(2);
+        System.out.println(classes);
+    }
+
     @After
     public void destory(){
         MyBatisUtils.closeSession(session);
