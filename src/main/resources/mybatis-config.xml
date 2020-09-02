@@ -13,6 +13,11 @@
         <package name="com.haiden.bean"/>
     </typeAliases>
 
+    <plugins>
+        <plugin interceptor="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor"/>
+    </plugins>
+
+
 
     <!--配置MyBatis连接数据库-->
     <!--开发环境-->
