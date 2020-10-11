@@ -13,26 +13,33 @@
         </if>
 
     </sql>
-    <select id="getUsers" resultType="user">
+
+    <resultMap id="userMap" type="com.haiden.bean.User">
+        <id column="u_ic" property="uId"></id>
+        <result column="u_name" property="uName"></result>
+        <result column="u_sex" property="uSex"></result>
+        <result column="u_age" property="uAge"></result>
+    </resultMap>
+    <select id="getUsers" resultMap="userMap">
         select * from user
     </select>
     <insert id="addUser">
         insert into user values (null,#{username},#{birthday},#{sex},#{address})
     </insert>
 
-    <select id="getUserByNameAndsex" resultType="user">
+    <select id="getUserByNameAndsex" resultType="com.haiden.bean.User">
         select * from user where 1 = 1
         <include refid="querySql"></include>
 
     </select>
-    <select id="getUserByNameAndsex1" resultType="user">
+    <select id="getUserByNameAndsex1" resultType="com.haiden.bean.User">
         select * from user
         <where>
            <include refid="querySql"></include>
         </where>
     </select>
 
-    <select id="getUserByNameAndsex2" resultType="user">
+    <select id="getUserByNameAndsex2" resultType="com.haiden.bean.User">
 
         select * from user
         <trim prefix="where" prefixOverrides="and" >
